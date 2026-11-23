@@ -4,11 +4,15 @@ from flask import Flask
 app = Flask(__name__)
 
 # E6 : message configurable par variable d'environnement
-MESSAGE = os.environ.get("APP_MESSAGE", "Bonjour depuis Docker !")
+MESSAGE = os.environ.get("APP_MESSAGE", "Bonjour depuis Docker ! !")
 
 @app.route("/")
 def index():
     return MESSAGE
+
+@app.route("/version")
+def version():
+    return "1.0.1"
 
 if __name__ == "__main__":
     # E5 : 0.0.0.0 = écouter sur toutes les interfaces du conteneur
